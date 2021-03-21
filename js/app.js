@@ -73,7 +73,7 @@ const Tokyo = {
   }
 
 };
-Tokyo.getCust(23,65);
+Tokyo.getCust(3,24);
 Tokyo.render();
 
 
@@ -106,7 +106,7 @@ const Dubai = {
   }
 
 };
-Dubai.getCust(23,65);
+Dubai.getCust(11,38);
 Dubai.render();
 
 
@@ -139,7 +139,7 @@ const Paris = {
   }
 
 };
-Paris.getCust(23,65);
+Paris.getCust(20,38);
 Paris.render();
 
 
@@ -172,6 +172,6 @@ const Lima = {
   }
 
 };
-Lima.getCust(23,65);
+Lima.getCust(2,16);
 Lima.render();
 
