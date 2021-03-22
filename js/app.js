@@ -1,13 +1,15 @@
 'use strict';
-const Seattle = {
+const seattle = {
   name : 'Seattle',
   cust : 0,
   workingHours : ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
   avgCookie : 6.3,
   minCust : 23,
   maxCust : 65,
+  total : 0,
   getCust : function(min,max){
     this.cust=Math.ceil( this.avgCookie * getRandomInt(min,max));
+    this.total+=this.cust;
     return this.cust;
   },
   render:function(){
@@ -24,7 +26,9 @@ const Seattle = {
       ulEl.appendChild(liEl);
       liEl.textContent=(` ${hour}:${this.getCust(this.minCust,this.maxCust)} cookies. ` );
     }) ;
-
+    const newLi=document.createElement('li');
+    ulEl.appendChild(newLi);
+    newLi.textContent=`Total : ${this.total}`;
   }
 
 };
@@ -38,8 +42,8 @@ function getRandomInt(min, max) {
 }
 
 
-Seattle.getCust(23,65);
-Seattle.render();
+seattle.getCust(23,65);
+seattle.render();
 
 
 
@@ -51,8 +55,10 @@ const Tokyo = {
   avgCookie : 1.2,
   minCust : 3,
   maxCust : 24,
+  total : 0,
   getCust : function(min,max){
     this.cust=Math.ceil( this.avgCookie * getRandomInt(min,max));
+    this.total+=this.cust;
     return this.cust;
   },
   render:function(){
@@ -69,7 +75,9 @@ const Tokyo = {
       ulEl.appendChild(liEl);
       liEl.textContent=(` ${hour}:${this.getCust(this.minCust,this.maxCust)} cookies. ` );
     }) ;
-
+    const newLi=document.createElement('li');
+    ulEl.appendChild(newLi);
+    newLi.textContent=`Total : ${this.total}`;
   }
 
 };
@@ -84,8 +92,10 @@ const Dubai = {
   avgCookie : 3.7,
   minCust : 11,
   maxCust : 38,
+  total : 0,
   getCust : function(min,max){
     this.cust=Math.ceil( this.avgCookie * getRandomInt(min,max));
+    this.total+=this.cust;
     return this.cust;
   },
   render:function(){
@@ -102,7 +112,9 @@ const Dubai = {
       ulEl.appendChild(liEl);
       liEl.textContent=(` ${hour}:${this.getCust(this.minCust,this.maxCust)} cookies. ` );
     }) ;
-
+    const newLi=document.createElement('li');
+    ulEl.appendChild(newLi);
+    newLi.textContent=`Total : ${this.total}`;
   }
 
 };
@@ -117,8 +129,10 @@ const Paris = {
   avgCookie : 2.3,
   minCust : 20,
   maxCust : 38,
+  total : 0,
   getCust : function(min,max){
     this.cust=Math.ceil( this.avgCookie * getRandomInt(min,max));
+    this.total+=this.cust;
     return this.cust;
   },
   render:function(){
@@ -135,7 +149,9 @@ const Paris = {
       ulEl.appendChild(liEl);
       liEl.textContent=(` ${hour}:${this.getCust(this.minCust,this.maxCust)} cookies. ` );
     }) ;
-
+    const newLi=document.createElement('li');
+    ulEl.appendChild(newLi);
+    newLi.textContent=`Total : ${this.total}`;
   }
 
 };
@@ -150,8 +166,10 @@ const Lima = {
   avgCookie : 4.6,
   minCust : 2,
   maxCust : 16,
+  total : 0,
   getCust : function(min,max){
     this.cust=Math.ceil( this.avgCookie * getRandomInt(min,max));
+    this.total+=this.cust;
     return this.cust;
   },
   render:function(){
@@ -168,7 +186,9 @@ const Lima = {
       ulEl.appendChild(liEl);
       liEl.textContent=(` ${hour}:${this.getCust(this.minCust,this.maxCust)} cookies. ` );
     }) ;
-
+    const newLi=document.createElement('li');
+    ulEl.appendChild(newLi);
+    newLi.textContent=`Total : ${this.total}`;
   }
 
 };
