@@ -116,8 +116,43 @@ City.prototype.render= function(){
   headerRowE2.appendChild(td2El);
   td2El.textContent=`${this.total}`;
 
-
 };
+
+
+const storeForm = document.getElementById('storeForm');
+storeForm.addEventListener('submit', NewStore);
+function NewStore() {
+  let rowToDelete = tableEl.rows.length;
+  tableEl.deleteRow(rowToDelete-1);
+
+  event.preventDefault();
+  let location = event.target.location.value;
+  let maxCust = Number(event.target.maxCust.value);
+  let minCust = Number(event.target.minCust.value);
+  let avgCookie = Number(event.target.avgCookie.value);
+  let newStore = new City(location, maxCust,minCust, avgCookie,[],[],0);
+
+
+  newStore.render();
+  const headerRowEl22 = document.createElement('tr');
+  tableEl.appendChild(headerRowEl22);
+  const td33 = document.createElement('td');
+  headerRowEl22.appendChild(td33);
+  td33.textContent = 'Totals';
+  for (let i = 0; i <footerdata.length; i++) {
+    const td33 = document.createElement('td');
+    headerRowEl22.appendChild(td33);
+    td33.textContent = footerdata[i];
+  }
+  for (let i = 0; i<workingHours.length; i++) {
+    totaloftotal += footerdata[i];
+  }
+  const td44 = document.createElement('td');
+  headerRowEl22.appendChild(td44);
+  td44.textContent = totaloftotal;
+
+}
+
 
 renderHeader();
 const City1 = new City('Seattle', 65, 23, 6.3,[],[],0);
