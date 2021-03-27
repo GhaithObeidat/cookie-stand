@@ -13,13 +13,12 @@ const tableEl = document.createElement('table');
 articleEl.appendChild(tableEl);
 
 
-console.log(workingHours);
 
 
 
-let totaloftotal=0;
+
 let footerdata = [];
-
+let allTotal=0;
 
 for (let i = 0; i < workingHours.length; i++) {
   footerdata.push(0);
@@ -28,6 +27,7 @@ for (let i = 0; i < workingHours.length; i++) {
 
 
 function footer(){
+
 
   const headerRowEl2 = document.createElement('tr');
   tableEl.appendChild(headerRowEl2);
@@ -38,13 +38,15 @@ function footer(){
     const td3 =document.createElement('td');
     headerRowEl2.appendChild(td3);
     td3.textContent=footerdata[i];
+    allTotal=allTotal+footerdata[i];
   }
-  for (let i = 0; i < workingHours.length; i++) {
-    totaloftotal+= footerdata[i];
-  }
+
   const td4 =document.createElement('td');
   headerRowEl2.appendChild(td4);
-  td4.textContent=totaloftotal;
+  td4.textContent=allTotal;
+
+
+
 }
 
 
@@ -54,6 +56,7 @@ function renderHeader(){
   tableEl.appendChild(headerRowEl);
   const th1El = document.createElement('th');
   headerRowEl.appendChild(th1El);
+  th1El.textContent = ' Hour                     ـــــــــــــــــ            location';
   for(let i=0; i< workingHours.length; i++)
   {
     const th1El = document.createElement('th');
@@ -91,8 +94,9 @@ City.prototype.getCookies = function () {
     this.cookies.push( Math.floor( this.cust[i]*this.avgCookie));
     this.total=this.total+this.cookies[i];
     footerdata[i]+=this.cookies[i];
+
   }
-  this.totalstor.push(this.total);
+
 },
 
 City.prototype.render= function(){
@@ -116,40 +120,39 @@ City.prototype.render= function(){
   headerRowE2.appendChild(td2El);
   td2El.textContent=`${this.total}`;
 
+
 };
 
 
-const storeForm = document.getElementById('storeForm');
-storeForm.addEventListener('submit', NewStore);
-function NewStore() {
-  let rowToDelete = tableEl.rows.length;
-  tableEl.deleteRow(rowToDelete-1);
+const storeForm =document.getElementById('storeForm');
+storeForm.addEventListener('submit', AddNewStore);
+function AddNewStore(event){
+
+
 
   event.preventDefault();
-  let location = event.target.location.value;
-  let maxCust = Number(event.target.maxCust.value);
-  let minCust = Number(event.target.minCust.value);
-  let avgCookie = Number(event.target.avgCookie.value);
-  let newStore = new City(location, maxCust,minCust, avgCookie,[],[],0);
+  console.log(event);
 
+  let rowtodelet = tableEl.rows.length;
+  tableEl.deleteRow(rowtodelet - 1);
+
+
+  let location = event.target.location.value;
+  console.log(location);
+  let minCust = event.target.minCust.value;
+  console.log(minCust);
+  let maxCust = event.target.maxCust.value;
+  console.log(maxCust);
+  let avgCookie = event.target.avgCookie.value;
+  console.log(avgCookie);
+
+
+  let newStore = new City(location,maxCust, minCust, avgCookie,[],[],0);
 
   newStore.render();
-  const headerRowEl22 = document.createElement('tr');
-  tableEl.appendChild(headerRowEl22);
-  const td33 = document.createElement('td');
-  headerRowEl22.appendChild(td33);
-  td33.textContent = 'Totals';
-  for (let i = 0; i <footerdata.length; i++) {
-    const td33 = document.createElement('td');
-    headerRowEl22.appendChild(td33);
-    td33.textContent = footerdata[i];
-  }
-  for (let i = 0; i<workingHours.length; i++) {
-    totaloftotal += footerdata[i];
-  }
-  const td44 = document.createElement('td');
-  headerRowEl22.appendChild(td44);
-  td44.textContent = totaloftotal;
+
+  footer();
+  storeForm.reset();
 
 }
 
@@ -158,7 +161,7 @@ renderHeader();
 const City1 = new City('Seattle', 65, 23, 6.3,[],[],0);
 City1.render();
 
-const City2 = new City('tokyo', 24, 3, 1.2,[],[],0);
+const City2 = new City('Tokyo', 24, 3, 1.2,[],[],0);
 City2.render();
 const City3 = new City('Dubai', 38, 11, 3.7,[],[],0);
 City3.render();
@@ -166,4 +169,5 @@ const City4 = new City('Paris', 38, 20, 2.3,[],[],0);
 City4.render();
 const City5 = new City('Lima', 16, 2, 4.6,[],[],0);
 City5.render();
+
 footer();
